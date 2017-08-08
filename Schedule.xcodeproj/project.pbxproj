@@ -15,6 +15,8 @@
 		E0985AB91F39AF3A0044848C /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AB81F39AF3A0044848C /* ScheduleTests.swift */; };
 		E0985AC41F39AF3A0044848C /* ScheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AC31F39AF3A0044848C /* ScheduleUITests.swift */; };
 		E0985AD31F39B54E0044848C /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0985AD21F39B54E0044848C /* FMDB.framework */; };
+		E0985AD61F39C0690044848C /* FMDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AD51F39C0690044848C /* FMDBHelper.swift */; };
+		E0985AD91F39C1D00044848C /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AD81F39C1D00044848C /* String+Path.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		E0985AC31F39AF3A0044848C /* ScheduleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUITests.swift; sourceTree = "<group>"; };
 		E0985AC51F39AF3A0044848C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0985AD21F39B54E0044848C /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
+		E0985AD51F39C0690044848C /* FMDBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FMDBHelper.swift; path = FMDBHelper.swift; sourceTree = "<group>"; };
+		E0985AD81F39C1D00044848C /* String+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,11 +84,11 @@
 		E0985A971F39AF3A0044848C = {
 			isa = PBXGroup;
 			children = (
+				E0985AD11F39B54E0044848C /* Frameworks */,
+				E0985AA11F39AF3A0044848C /* Products */,
 				E0985AA21F39AF3A0044848C /* Schedule */,
 				E0985AB71F39AF3A0044848C /* ScheduleTests */,
 				E0985AC21F39AF3A0044848C /* ScheduleUITests */,
-				E0985AA11F39AF3A0044848C /* Products */,
-				E0985AD11F39B54E0044848C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,12 +105,10 @@
 		E0985AA21F39AF3A0044848C /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				E0985AA31F39AF3A0044848C /* AppDelegate.swift */,
-				E0985AA51F39AF3A0044848C /* ViewController.swift */,
-				E0985AA71F39AF3A0044848C /* Main.storyboard */,
-				E0985AAA1F39AF3A0044848C /* Assets.xcassets */,
-				E0985AAC1F39AF3A0044848C /* LaunchScreen.storyboard */,
-				E0985AAF1F39AF3A0044848C /* Info.plist */,
+				E0985ADB1F39C2490044848C /* Controllers */,
+				E0985AD71F39C19F0044848C /* Extensions */,
+				E0985ADC1F39C2740044848C /* Models */,
+				E0985ADA1F39C21A0044848C /* Others */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -114,8 +116,8 @@
 		E0985AB71F39AF3A0044848C /* ScheduleTests */ = {
 			isa = PBXGroup;
 			children = (
-				E0985AB81F39AF3A0044848C /* ScheduleTests.swift */,
 				E0985ABA1F39AF3A0044848C /* Info.plist */,
+				E0985AB81F39AF3A0044848C /* ScheduleTests.swift */,
 			);
 			path = ScheduleTests;
 			sourceTree = "<group>";
@@ -123,8 +125,8 @@
 		E0985AC21F39AF3A0044848C /* ScheduleUITests */ = {
 			isa = PBXGroup;
 			children = (
-				E0985AC31F39AF3A0044848C /* ScheduleUITests.swift */,
 				E0985AC51F39AF3A0044848C /* Info.plist */,
+				E0985AC31F39AF3A0044848C /* ScheduleUITests.swift */,
 			);
 			path = ScheduleUITests;
 			sourceTree = "<group>";
@@ -135,6 +137,55 @@
 				E0985AD21F39B54E0044848C /* FMDB.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E0985AD71F39C19F0044848C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E0985AD81F39C1D00044848C /* String+Path.swift */,
+			);
+			name = Extensions;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E0985ADA1F39C21A0044848C /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				E0985AA31F39AF3A0044848C /* AppDelegate.swift */,
+				E0985AAA1F39AF3A0044848C /* Assets.xcassets */,
+				E0985AAF1F39AF3A0044848C /* Info.plist */,
+			);
+			name = Others;
+			path = Others;
+			sourceTree = "<group>";
+		};
+		E0985ADB1F39C2490044848C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E0985AAC1F39AF3A0044848C /* LaunchScreen.storyboard */,
+				E0985AA71F39AF3A0044848C /* Main.storyboard */,
+				E0985AA51F39AF3A0044848C /* ViewController.swift */,
+			);
+			name = Controllers;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E0985ADC1F39C2740044848C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E0985ADD1F39C3010044848C /* DB */,
+			);
+			name = Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E0985ADD1F39C3010044848C /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				E0985AD51F39C0690044848C /* FMDBHelper.swift */,
+			);
+			name = DB;
+			path = DB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,7 +345,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0985AA61F39AF3A0044848C /* ViewController.swift in Sources */,
+				E0985AD61F39C0690044848C /* FMDBHelper.swift in Sources */,
 				E0985AA41F39AF3A0044848C /* AppDelegate.swift in Sources */,
+				E0985AD91F39C1D00044848C /* String+Path.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +389,7 @@
 				E0985AA81F39AF3A0044848C /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		E0985AAC1F39AF3A0044848C /* LaunchScreen.storyboard */ = {
@@ -344,6 +398,7 @@
 				E0985AAD1F39AF3A0044848C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -451,7 +506,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Schedule/Info.plist;
+				INFOPLIST_FILE = Schedule/Others/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sundaycarpenter.Schedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -468,7 +523,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Schedule/Info.plist;
+				INFOPLIST_FILE = Schedule/Others/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sundaycarpenter.Schedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
