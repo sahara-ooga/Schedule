@@ -280,6 +280,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/FMDB.framework",
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/FMDB.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
