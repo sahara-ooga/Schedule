@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		106E682B1F3C9F7700BCFCDE /* ScheduleDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106E682A1F3C9F7700BCFCDE /* ScheduleDto.swift */; };
+		106E682D1F3CA0F400BCFCDE /* ScheduleDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106E682C1F3CA0F400BCFCDE /* ScheduleDao.swift */; };
+		10915B1B1F3E722F0046D424 /* ScheduleDaoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10915B1A1F3E722F0046D424 /* ScheduleDaoTest.swift */; };
 		E0985AA41F39AF3A0044848C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AA31F39AF3A0044848C /* AppDelegate.swift */; };
 		E0985AA61F39AF3A0044848C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AA51F39AF3A0044848C /* ViewController.swift */; };
 		E0985AA91F39AF3A0044848C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0985AA71F39AF3A0044848C /* Main.storyboard */; };
@@ -39,6 +41,9 @@
 
 /* Begin PBXFileReference section */
 		106E682A1F3C9F7700BCFCDE /* ScheduleDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDto.swift; sourceTree = "<group>"; };
+		106E682C1F3CA0F400BCFCDE /* ScheduleDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDao.swift; sourceTree = "<group>"; };
+		10915B181F3DD7150046D424 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		10915B1A1F3E722F0046D424 /* ScheduleDaoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDaoTest.swift; sourceTree = "<group>"; };
 		E0985AA01F39AF3A0044848C /* Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0985AA31F39AF3A0044848C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0985AA51F39AF3A0044848C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +125,7 @@
 			children = (
 				E0985ABA1F39AF3A0044848C /* Info.plist */,
 				E0985AB81F39AF3A0044848C /* ScheduleTests.swift */,
+				10915B1A1F3E722F0046D424 /* ScheduleDaoTest.swift */,
 			);
 			path = ScheduleTests;
 			sourceTree = "<group>";
@@ -136,6 +142,7 @@
 		E0985AD11F39B54E0044848C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10915B181F3DD7150046D424 /* libsqlite3.0.tbd */,
 				E0985AD21F39B54E0044848C /* FMDB.framework */,
 			);
 			name = Frameworks;
@@ -182,6 +189,7 @@
 			children = (
 				E0985AD51F39C0690044848C /* FMDBHelper.swift */,
 				106E682A1F3C9F7700BCFCDE /* ScheduleDto.swift */,
+				106E682C1F3CA0F400BCFCDE /* ScheduleDao.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -329,7 +337,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/FMDB.framework",
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/FMDB.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FMDB.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -343,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0985AA61F39AF3A0044848C /* ViewController.swift in Sources */,
+				106E682D1F3CA0F400BCFCDE /* ScheduleDao.swift in Sources */,
 				E0985AD61F39C0690044848C /* FMDBHelper.swift in Sources */,
 				E0985AA41F39AF3A0044848C /* AppDelegate.swift in Sources */,
 				106E682B1F3C9F7700BCFCDE /* ScheduleDto.swift in Sources */,
@@ -355,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0985AB91F39AF3A0044848C /* ScheduleTests.swift in Sources */,
+				10915B1B1F3E722F0046D424 /* ScheduleDaoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sundaycarpenter.Schedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -528,6 +539,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sundaycarpenter.Schedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

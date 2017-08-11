@@ -12,8 +12,8 @@ final class ScheduleDto: NSObject {
     var id = 0
     var title = ""
     var location = ""
-    var startDate = ""
-    var endDate = ""
+    var startDate = Date()
+    var endDate = Date()
     var detail = ""
     var deleteFlag = false
 }
