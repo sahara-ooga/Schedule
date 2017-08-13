@@ -375,6 +375,21 @@ class ScheduleDaoTest: XCTestCase {
     }
     
     //MARK: Delete
+    func testDeleteSomeRecordById() {
+        insertTwoRecord()
+        let deletedId = 1
+        XCTAssertTrue(dao.delete(id: deletedId))
+        
+        let selectedschedules = dao.selectAll()
+        guard let schedules = selectedschedules else {
+            XCTFail("Not inserted.")
+            return
+        }
+        
+        for schedule in schedules{
+            XCTAssertTrue(schedule.id != deletedId)
+        }
+    }
 }
 
 // MARK: - ヘルパーメソッド
