@@ -10,14 +10,18 @@
 		106E682B1F3C9F7700BCFCDE /* ScheduleDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106E682A1F3C9F7700BCFCDE /* ScheduleDto.swift */; };
 		106E682D1F3CA0F400BCFCDE /* ScheduleDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106E682C1F3CA0F400BCFCDE /* ScheduleDao.swift */; };
 		10915B1B1F3E722F0046D424 /* ScheduleDaoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10915B1A1F3E722F0046D424 /* ScheduleDaoTest.swift */; };
+		10915B1C1F3EAF280046D424 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0985AD21F39B54E0044848C /* FMDB.framework */; };
+		10915B211F3EB1FA0046D424 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 10915B201F3EB1FA0046D424 /* libsqlite3.dylib */; };
+		10915B231F401DCE0046D424 /* libsqlite3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10915B201F3EB1FA0046D424 /* libsqlite3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		10915B241F401DCE0046D424 /* FMDB.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E0985AD21F39B54E0044848C /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		10915B251F4020290046D424 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0985AD21F39B54E0044848C /* FMDB.framework */; };
+		10915B261F4020440046D424 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 10915B201F3EB1FA0046D424 /* libsqlite3.dylib */; };
 		E0985AA41F39AF3A0044848C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AA31F39AF3A0044848C /* AppDelegate.swift */; };
 		E0985AA61F39AF3A0044848C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AA51F39AF3A0044848C /* ViewController.swift */; };
 		E0985AA91F39AF3A0044848C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0985AA71F39AF3A0044848C /* Main.storyboard */; };
 		E0985AAB1F39AF3A0044848C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0985AAA1F39AF3A0044848C /* Assets.xcassets */; };
 		E0985AAE1F39AF3A0044848C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0985AAC1F39AF3A0044848C /* LaunchScreen.storyboard */; };
-		E0985AB91F39AF3A0044848C /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AB81F39AF3A0044848C /* ScheduleTests.swift */; };
 		E0985AC41F39AF3A0044848C /* ScheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AC31F39AF3A0044848C /* ScheduleUITests.swift */; };
-		E0985AD31F39B54E0044848C /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0985AD21F39B54E0044848C /* FMDB.framework */; };
 		E0985AD61F39C0690044848C /* FMDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AD51F39C0690044848C /* FMDBHelper.swift */; };
 		E0985AD91F39C1D00044848C /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0985AD81F39C1D00044848C /* String+Path.swift */; };
 /* End PBXBuildFile section */
@@ -39,11 +43,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		10915B221F401DB30046D424 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				10915B231F401DCE0046D424 /* libsqlite3.dylib in CopyFiles */,
+				10915B241F401DCE0046D424 /* FMDB.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		106E682A1F3C9F7700BCFCDE /* ScheduleDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDto.swift; sourceTree = "<group>"; };
 		106E682C1F3CA0F400BCFCDE /* ScheduleDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDao.swift; sourceTree = "<group>"; };
 		10915B181F3DD7150046D424 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		10915B1A1F3E722F0046D424 /* ScheduleDaoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDaoTest.swift; sourceTree = "<group>"; };
+		10915B1E1F3EB1970046D424 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		10915B201F3EB1FA0046D424 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		E0985AA01F39AF3A0044848C /* Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0985AA31F39AF3A0044848C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0985AA51F39AF3A0044848C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +72,6 @@
 		E0985AAD1F39AF3A0044848C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0985AAF1F39AF3A0044848C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0985AB41F39AF3A0044848C /* ScheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScheduleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0985AB81F39AF3A0044848C /* ScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
 		E0985ABA1F39AF3A0044848C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0985ABF1F39AF3A0044848C /* ScheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScheduleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0985AC31F39AF3A0044848C /* ScheduleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUITests.swift; sourceTree = "<group>"; };
@@ -67,7 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0985AD31F39B54E0044848C /* FMDB.framework in Frameworks */,
+				10915B211F3EB1FA0046D424 /* libsqlite3.dylib in Frameworks */,
+				10915B1C1F3EAF280046D424 /* FMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10915B261F4020440046D424 /* libsqlite3.dylib in Frameworks */,
+				10915B251F4020290046D424 /* FMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				E0985ABA1F39AF3A0044848C /* Info.plist */,
-				E0985AB81F39AF3A0044848C /* ScheduleTests.swift */,
 				10915B1A1F3E722F0046D424 /* ScheduleDaoTest.swift */,
 			);
 			path = ScheduleTests;
@@ -142,6 +163,8 @@
 		E0985AD11F39B54E0044848C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10915B201F3EB1FA0046D424 /* libsqlite3.dylib */,
+				10915B1E1F3EB1970046D424 /* libsqlite3.tbd */,
 				10915B181F3DD7150046D424 /* libsqlite3.0.tbd */,
 				E0985AD21F39B54E0044848C /* FMDB.framework */,
 			);
@@ -222,6 +245,7 @@
 				E0985AB01F39AF3A0044848C /* Sources */,
 				E0985AB11F39AF3A0044848C /* Frameworks */,
 				E0985AB21F39AF3A0044848C /* Resources */,
+				10915B221F401DB30046D424 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -363,7 +387,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0985AB91F39AF3A0044848C /* ScheduleTests.swift in Sources */,
 				10915B1B1F3E722F0046D424 /* ScheduleDaoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,8 +573,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = KE8PEF6922;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ScheduleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/**";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sundaycarpenter.ScheduleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -565,6 +593,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = KE8PEF6922;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ScheduleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sundaycarpenter.ScheduleTests;
