@@ -14,6 +14,10 @@ import FMDB
 class ScheduleDaoTest: XCTestCase {
     let dao = ScheduleDao()
     
+    //utility property
+    let oneDayTimeInterval:TimeInterval = 60*60*24
+    
+    //MARK: Life cycle
     //データベースファイルごと消去して、新たに作成する
     override func setUp() {
         super.setUp()
@@ -138,6 +142,237 @@ class ScheduleDaoTest: XCTestCase {
         }
     }
     
+    //MARK: Update
+//    func testUpdateDetail() {
+//        //レコードを挿入
+//        //サンプルレコードを作る
+//        let startDate = Date()
+//        let endDate = Date(timeInterval: 60*60*24, since: Date())
+//        let startDate2 = Date(timeInterval: 60*60*24, since: Date())
+//        let endDate2 = Date(timeInterval: 60*60*24, since: startDate2)
+//        
+//        let scheduleDic1:[String:Any] = ["title":"title1","location":"富山",
+//                                         "startDate":startDate,"endDate":endDate,
+//                                         "detail":"detail1","deleteFlag":false]
+//        let scheduleDic2:[String:Any] = ["title":"title2","location":"青森",
+//                                         "startDate":startDate2,"endDate":endDate2,
+//                                         "detail":"detail2","deleteFlag":false]
+//        let scheduleDicArray = [scheduleDic1,scheduleDic2]
+//        
+//        var schedules = [ScheduleDto]()
+//        for dic in scheduleDicArray{
+//            let schedule = ScheduleDto()
+//            schedule.title = dic["title"] as! String
+//            schedule.location = dic["location"] as! String
+//            schedule.startDate = dic["startDate"] as! Date
+//            schedule.endDate = dic["endDate"] as! Date
+//            schedule.detail = dic["detail"] as! String
+//            schedule.deleteFlag = dic["deleteFlag"] as! Bool
+//            schedules.append(schedule)
+//        }
+//        
+//        XCTAssertTrue(dao.insert(scheduleDtos: schedules))
+//        
+//        //レコードをアップデート
+//        XCTAssertTrue(dao.update(id: 1, title: nil, location: nil,
+//                                 startDate: nil, endDate: nil,
+//                                 detail: "updated detail", deleteFlag: nil))
+//        
+//        //アップデートの検証
+//        let updatedSchedules = dao.selectAll()
+//        let updatedSchedule = updatedSchedules![0]
+//        
+//        XCTAssertEqual(updatedSchedule.detail,"updated detail")
+//    }
+    
+    func testUpdateTitle() {
+        //レコードを挿入
+        //サンプルレコードを作る
+        let startDate = Date()
+        let endDate = Date(timeInterval: 60*60*24, since: Date())
+        let startDate2 = Date(timeInterval: 60*60*24, since: Date())
+        let endDate2 = Date(timeInterval: 60*60*24, since: startDate2)
+        
+        let scheduleDic1:[String:Any] = ["title":"title1","location":"富山",
+                                         "startDate":startDate,"endDate":endDate,
+                                         "detail":"detail1","deleteFlag":false]
+        let scheduleDic2:[String:Any] = ["title":"title2","location":"青森",
+                                         "startDate":startDate2,"endDate":endDate2,
+                                         "detail":"detail2","deleteFlag":false]
+        let scheduleDicArray = [scheduleDic1,scheduleDic2]
+        
+        var schedules = [ScheduleDto]()
+        for dic in scheduleDicArray{
+            let schedule = ScheduleDto()
+            schedule.title = dic["title"] as! String
+            schedule.location = dic["location"] as! String
+            schedule.startDate = dic["startDate"] as! Date
+            schedule.endDate = dic["endDate"] as! Date
+            schedule.detail = dic["detail"] as! String
+            schedule.deleteFlag = dic["deleteFlag"] as! Bool
+            schedules.append(schedule)
+        }
+        //作ったスケジュールを挿入
+        XCTAssertTrue(dao.insert(scheduleDtos: schedules))
+        
+        //レコードをアップデート
+        XCTAssertTrue(dao.update(id: 1, title: "Updated Title", location: nil,
+                                 startDate: nil, endDate: nil,
+                                 detail: nil, deleteFlag: nil))
+        
+        //アップデートの検証
+        let updatedSchedules = dao.selectAll()
+        let updatedSchedule = updatedSchedules![0]
+        
+        XCTAssertEqual(updatedSchedule.title,"Updated Title")
+    }
+    
+    func testUpdateLocation() {
+        let updatedRecordId = 2
+        //スケジュールを２つ挿入
+        insertTwoRecord()
+        
+        //2つ目のレコードのロケーションを更新
+        XCTAssertTrue(dao.update(id: updatedRecordId,
+                                 location: "横浜"))
+        
+        //アップデートの検証
+        let updatedSchedules = dao.selectAll()
+        let updatedSchedule = updatedSchedules![updatedRecordId - 1]
+        
+        XCTAssertEqual(updatedSchedule.location,"横浜")
+    }
+    
+    func testUpdateStartDate() {
+        let updatedRecordId = 2
+        let updatedStartDate = Date(timeInterval: oneDayTimeInterval * 4, since: Date())
+        
+        //スケジュールを２つ挿入
+        insertTwoRecord()
+        
+        //2つ目のレコードのロケーションを更新
+        XCTAssertTrue(dao.update(id: updatedRecordId,
+                                 startDate:updatedStartDate))
+        
+        //アップデートの検証
+        let updatedSchedules = dao.selectAll()
+        let updatedSchedule = updatedSchedules![updatedRecordId - 1]
+        
+        XCTAssertEqualWithAccuracy(updatedSchedule.startDate.timeIntervalSinceReferenceDate,
+                                   updatedStartDate.timeIntervalSinceReferenceDate,
+                                   accuracy: 0.01, "")
+    }
+    
+    func testUpdateEndDate() {
+        let updatedRecordId = 2
+        let updatedEndDate = Date(timeInterval: oneDayTimeInterval * 3, since: Date())
+        
+        //スケジュールを２つ挿入
+        insertTwoRecord()
+        
+        //2つ目のレコードのロケーションを更新
+        XCTAssertTrue(dao.update(id: updatedRecordId,
+                                 endDate:updatedEndDate))
+        
+        //アップデートの検証
+        let updatedSchedules = dao.selectAll()
+        let updatedSchedule = updatedSchedules![updatedRecordId - 1]
+        
+        //XCTAssertEqual(updatedSchedule.,"横浜")
+        XCTAssertEqualWithAccuracy(updatedSchedule.endDate.timeIntervalSinceReferenceDate,
+                                   updatedEndDate.timeIntervalSinceReferenceDate,
+                                   accuracy: 0.01, "")
+    }
+    
+    func testUpdateDetail() {
+        //レコードを挿入
+        //サンプルレコードを作る
+        insertTwoRecord()
+        
+        //レコードをアップデート
+        XCTAssertTrue(dao.update(id: 1, title: nil, location: nil,
+                                 startDate: nil, endDate: nil,
+                                 detail: "updated detail", deleteFlag: nil))
+        
+        //アップデートの検証
+        let updatedSchedules = dao.selectAll()
+        let updatedSchedule = updatedSchedules![0]
+        
+        XCTAssertEqual(updatedSchedule.detail,"updated detail")
+    }
+    
+    func testUpdateDeleteFlag() {
+        let updatedRecordId = 2
+
+        //レコードを挿入
+        //サンプルレコードを作る
+        insertTwoRecord()
+        
+        //レコードをアップデート
+        XCTAssertTrue(dao.update(id: updatedRecordId,
+                                 deleteFlag: true))
+        
+        //アップデートの検証
+        let updatedSchedules = dao.selectAll()
+        let updatedSchedule = updatedSchedules![updatedRecordId - 1]
+        
+        XCTAssertEqual(updatedSchedule.deleteFlag,true)
+    }
+
+    func testUpdateTitleAndDetail() {
+        insertTwoRecord()
+
+        let updatedRecordId = 2
+        let updatedTitle = "updated title"
+        let updatedDetail = "what happen?"
+
+        XCTAssertTrue(dao.update(id: updatedRecordId,
+                                 title: updatedTitle,
+                                 detail: updatedDetail))
+        
+        let updatedSchedules = dao.selectAll()
+        let updatedSchedule = updatedSchedules![updatedRecordId - 1]
+        XCTAssertEqual(updatedSchedule.title,updatedTitle)
+        XCTAssertEqual(updatedSchedule.detail,updatedDetail)
+    }
+    
+    ///すべてのプロパティを一度に更新する
+    func testUpdateAllColumn() {
+        //レコードを挿入
+        //サンプルレコードを作る
+        insertTwoRecord()
+        
+        let updatedRecordId = 1
+        let updatedTitle = "updated title"
+        let updatedLocation = "高田馬場"
+        let updatedStartDate = Date(timeInterval: oneDayTimeInterval * 4, since: Date())
+        let updatedEndDate = Date(timeInterval: oneDayTimeInterval * 5, since: Date())
+        let updatedDetail = "what happen?"
+        let updatedDeleteFlag = true
+        
+        //レコードをアップデート
+        XCTAssertTrue(dao.update(id: updatedRecordId,
+                                 title: updatedTitle,
+                                 location: updatedLocation,
+                                 startDate: updatedStartDate,
+                                 endDate: updatedEndDate,
+                                 detail: updatedDetail,
+                                 deleteFlag: updatedDeleteFlag))
+        
+        //アップデートの検証
+        let updatedSchedules = dao.selectAll()
+        let updatedSchedule = updatedSchedules![updatedRecordId - 1]
+        XCTAssertEqual(updatedSchedule.title,updatedTitle)
+        XCTAssertEqual(updatedSchedule.location,updatedLocation)
+        XCTAssertEqualWithAccuracy(updatedSchedule.startDate.timeIntervalSinceReferenceDate,
+                                   updatedStartDate.timeIntervalSinceReferenceDate,
+                                   accuracy: 0.01, "")
+        XCTAssertEqualWithAccuracy(updatedSchedule.endDate.timeIntervalSinceReferenceDate,
+                                   updatedEndDate.timeIntervalSinceReferenceDate,
+                                   accuracy: 0.01, "")
+        XCTAssertEqual(updatedSchedule.detail,updatedDetail)
+        XCTAssertEqual(updatedSchedule.deleteFlag,updatedDeleteFlag)
+    }
     
     //MARK: Delete
 }
@@ -154,5 +389,35 @@ extension ScheduleDaoTest {
                 print("Error: faild to remove database file.")
             }
         }
+    }
+    
+    func insertTwoRecord() {
+        let startDate = Date()
+        let endDate = Date(timeInterval: 60*60*24, since: Date())
+        let startDate2 = Date(timeInterval: 60*60*24, since: Date())
+        let endDate2 = Date(timeInterval: 60*60*24, since: startDate2)
+        
+        let scheduleDic1:[String:Any] = ["title":"title1","location":"富山",
+                                         "startDate":startDate,"endDate":endDate,
+                                         "detail":"detail1","deleteFlag":false]
+        let scheduleDic2:[String:Any] = ["title":"title2","location":"青森",
+                                         "startDate":startDate2,"endDate":endDate2,
+                                         "detail":"detail2","deleteFlag":false]
+        let scheduleDicArray = [scheduleDic1,scheduleDic2]
+        
+        var schedules = [ScheduleDto]()
+        for dic in scheduleDicArray{
+            let schedule = ScheduleDto()
+            schedule.title = dic["title"] as! String
+            schedule.location = dic["location"] as! String
+            schedule.startDate = dic["startDate"] as! Date
+            schedule.endDate = dic["endDate"] as! Date
+            schedule.detail = dic["detail"] as! String
+            schedule.deleteFlag = dic["deleteFlag"] as! Bool
+            schedules.append(schedule)
+        }
+        
+        //作ったスケジュールを挿入
+        _ = dao.insert(scheduleDtos: schedules)
     }
 }

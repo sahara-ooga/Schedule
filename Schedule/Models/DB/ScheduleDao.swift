@@ -147,13 +147,63 @@ final class ScheduleDao: NSObject {
     
     // MARK:- UPDATE
     
-    /// 指定idのレコードのheight, massを更新する
-    func update(id: Int, height: Int, mass: Int) -> Bool {
-        let sql = "UPDATE Schedule SET height = :HEIGHT, mass = :MASS WHERE id = :ID"
-        let params = ["HEIGHT": height, "MASS": mass, "ID": id]
+    /// 指定idのレコードのプロパティのうち与えられたものだけを更新する
+    func update(id: Int,
+                title: String? = nil,
+                location: String? = nil,
+                startDate:Date? = nil,
+                endDate:Date? = nil,
+                detail:String? = nil,
+                deleteFlag:Bool? = nil) -> Bool {
+
+        //nilでないパラメタだけ、sqlとparamsに項目を追加する
+        var updateSql = "UPDATE Schedule SET "
+        var params:[String : Any] = ["ID":id]
         
+        if let title = title {
+            updateSql += "title = :TITLE, "
+            params["TITLE"] = title
+        }
+        
+        if let location = location {
+            updateSql += "location = :LOCATION, "
+            params["LOCATION"] = location
+        }
+        
+        if let startDate = startDate {
+            updateSql += "startDate = :STARTDATE, "
+            params["STARTDATE"] = startDate
+        }
+        
+        if let endDate = endDate {
+            updateSql += "endDate = :ENDDATE, "
+            params["ENDDATE"] = endDate
+        }
+        
+        if let detail = detail {
+            updateSql += "detail = :DETAIL, "
+            params["DETAIL"] = detail
+        }
+        
+        if let deleteFlag = deleteFlag {
+            updateSql += "deleteFlag = :DELETEFLAG, "
+            params["DELETEFLAG"] = deleteFlag
+        }
+        
+        //sql文のアップデートしたいキーワードは、最後の一つ前までは","がついていないといけない。
+        //なので、最後の", "を刈り取る
+        if updateSql.hasSuffix(", "){
+            let excludes = CharacterSet(charactersIn:", ")
+            updateSql = updateSql.trimmingCharacters(in: excludes)
+        }
+        
+        //updateSql中の最後のカンマを削除する
+        updateSql += " WHERE id = :ID"
+        
+        //DBの処理
         _ = baseDao.dbOpen()
-        let executeSQL = baseDao.db.executeUpdate(sql, withParameterDictionary: params)
+        let executeSQL = baseDao.db.executeUpdate(updateSql,
+                                                  withParameterDictionary: params)
         _ = baseDao.dbClose()
         return executeSQL
     }
